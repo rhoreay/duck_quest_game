@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public float MoveSpeed = 5f;
     public Rigidbody2D rb;
     private Vector2 MoveInput;
-    private Animator animator;
+
 
 
 
@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -27,17 +27,9 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void Move(InputAction.CallbackContext context){
-        animator.SetBool("IsWalking", true);
-
-        if(context.canceled){
-            animator.SetBool("IsWalking", false);
-            animator.SetFloat("LastInputX", MoveInput.x);
-            animator.SetFloat("LastInputY", MoveInput.y);
-        }
 
         MoveInput = context.ReadValue<Vector2>();
-        animator.SetFloat("InputX", MoveInput.x);
-        animator.SetFloat("InputY", MoveInput.y);
+
     }
 
 }
